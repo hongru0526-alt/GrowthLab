@@ -1,0 +1,72 @@
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+}
+
+function generateResume() {
+  const name = document.getElementById("name").value;
+  const education = document.getElementById("education").value;
+  const skills = document.getElementById("skills").value;
+
+  const template = `
+【履歷表】
+姓名：${name}
+學歷：${education}
+技能：${skills}
+`;
+
+  document.getElementById("resumeOutput").textContent = template;
+}
+
+function saveMessage() {
+  const msg = document.getElementById("message").value;
+  localStorage.setItem("growthlab_message", msg);
+  loadMessage();
+}
+
+function loadMessage() {
+  const saved = localStorage.getItem("growthlab_message");
+  document.getElementById("savedMessage").textContent = saved || "(目前沒有留言)";
+}
+
+loadMessage();
+
+function botReply(message) {
+  const msg = message.toLowerCase();
+
+  if (msg.includes("履歷")) {
+    return "履歷可以從「基本資料、學歷、技能、自我介紹、經驗成果」開始，我可以教你每一步！";
+  }
+
+  if (msg.includes("學習")) {
+    return "學習最重要的是持續！你可以從簡單的英文或程式開始，我可以給你網址喔！";
+  }
+
+  if (msg.includes("壓力") || msg.includes("難過") || msg.includes("焦慮")) {
+    return "你不是孤單的，很多人也有類似感受。深呼吸，再慢慢告訴我你的狀況。";
+  }
+
+  return "我聽到了！你可以再告訴我更多，我會盡力幫助你。";
+}
+
+function addMessage(text, sender) {
+  const chatlog = document.getElementById("chatlog");
+  const msgDiv = document.createElement("div");
+  msgDiv.className = "message " + sender;
+  msgDiv.textContent = text;
+  chatlog.appendChild(msgDiv);
+  chatlog.scrollTop = chatlog.scrollHeight;
+}
+
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const text = input.value.trim();
+  if (!text) return;
+
+  addMessage(text, "user");
+  input.value = "";
+
+  setTimeout(() => {
+    const reply = botReply(text);
+    addMessage(reply, "bot");
+  }, 500);
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GrowthLab</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="hero">
+    <h1>GrowthLab</h1>
+    <p>讓每一個人成長，填補未來的人才缺口。</p>
+    <button onclick="scrollToSection('resume')">開始填寫履歷</button>
+  </div>
+
+  <section id="resume">
+    <h2>履歷指南</h2>
+    <p>教你如何一步一步寫出亮眼的履歷。</p>
+
+    <h3>履歷自動產生器</h3>
+    <input id="name" placeholder="姓名" />
+    <input id="education" placeholder="學歷" />
+    <input id="skills" placeholder="技能" />
+    <button onclick="generateResume()">產生履歷</button>
+
+    <pre id="resumeOutput"></pre>
+  </section>
+
+  <section id="learning">
+    <h2>課業學習平台</h2>
+    <p>你可以在這裡學習各種科目與技能。</p>
+
+    <ul>
+      <li><a href="#">英文文法教學</a></li>
+      <li><a href="#">基本程式入門</a></li>
+      <li><a href="#">科學小知識</a></li>
+    </ul>
+  </section>
+
+  <section id="mental">
+    <h2>心理諮詢與支持</h2>
+    <p>感到壓力大？你並不孤單。</p>
+
+    <textarea id="message" placeholder="留下你的感受（僅存在本機）"></textarea>
+    <button onclick="saveMessage()">儲存</button>
+
+    <h3>你的留言</h3>
+    <div id="savedMessage"></div>
+  </section>
+
+  <section id="ai-assistant">
+    <h2>AI 助手</h2>
+    <p>有任何問題？可以直接問我！</p>
+
+    <div id="chatbox">
+      <div id="chatlog"></div>
+    </div>
+
+    <input id="userInput" placeholder="輸入你的問題..." />
+    <button onclick="sendMessage()">送出</button>
+  </section>
+
+  <section id="contact">
+    <h2>聯絡我們</h2>
+    <p>如果你有任何建議、合作或問題，可以直接 Email 給我們：</p>
+
+    <a href="mailto:你的gmail@gmail.com" class="contact-btn">寄信給 GrowthLab</a>
+  </section>
+
+  <footer>
+    © 2025 GrowthLab | 聯絡：你的gmail@gmail.com
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
